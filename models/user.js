@@ -45,16 +45,14 @@ const userSchema = new Schema({
 userSchema.virtual("password")
     .set( function (password){
         this._password = password
-        this.salt = uuidv1();
+        this.salt = uuidv4();
         this.encrypted_password = this.securePassword(password)
     } )
     .get( function(){
         return this._password
     })
 
-
-
-userSchema.method = {
+userSchema.methods = {
     
     authenticate:function (plain_password){
         return this.securePassword(plain_password) === this.encrypted_password
