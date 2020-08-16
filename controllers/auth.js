@@ -3,7 +3,11 @@ const { validationResult } = require('express-validator');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt'); 
 
-
+exports.deleteme = (req,res) =>{
+    console.log('req',req);
+    console.log('res',res);
+    res.end()
+}
 
 exports.signin = (req,res) =>{
     const {email , password} = req.body;
@@ -92,7 +96,7 @@ exports.isAuthenticated = (req,res,next) => {
     // FIXME: in the front end create a property called profile
     // auth is set from isSignedIn method from above
     // TODO: please connect back hte dots !!!
-    let checker = req.profile && req.auth && req.profile._id === req.auth._id;
+    let checker = req.profile && req.auth && req.profile._id == req.auth._id;
     if( !checker ){
         return res.status(403).json({
             error:"ACCESS DENIED !!!"

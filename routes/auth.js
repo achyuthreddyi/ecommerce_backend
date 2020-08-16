@@ -2,9 +2,10 @@ const express = require("express")
 const router = express.Router()
 const { check } = require('express-validator');
 
-const { signout,signup,signin,isSignedIn } = require('../controllers/auth')
+const { signout,signup,signin,isSignedIn,deleteme } = require('../controllers/auth')
 
 // import { Router } from "express";
+router.get("/delete",deleteme)
 
 //sign up the new user
 router.post("/signup", [
