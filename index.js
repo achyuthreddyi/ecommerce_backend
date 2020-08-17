@@ -5,6 +5,7 @@ const app = express()
 // defining all the routes
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
+const categoryRoutes = require('./routes/category')
 
 //middlewares
 const bodyParser = require("body-parser")
@@ -24,6 +25,7 @@ mongoose.connect(process.env.DATABASE,
 // Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
 
 
 

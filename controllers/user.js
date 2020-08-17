@@ -31,7 +31,8 @@ exports.updateUser = (req,res) =>{
         (err,user) =>{
             if(err){
                 return res.status(400).json({
-                    error:"YOU ARE NOT ALLOWED TO UPDATE THE DATABASE"
+                    error:"YOU ARE NOT ALLOWED TO UPDATE THE DATABASE",
+                    err
                 })
             }
             user.salt = undefined

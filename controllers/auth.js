@@ -71,8 +71,7 @@ exports.signup = (req,res) =>{
         email:user.email,
         id:user._id
     })
-    } )
-    
+    })    
 }
 exports.signout = (req,res) =>{
     res.clearCookie("token");
@@ -87,8 +86,6 @@ exports.isSignedIn = expressJwt({
     secret:process.env.SECRET,
     userProperty:"auth"
 });
-
-
 
 // custom middlewares
 
