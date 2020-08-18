@@ -9,7 +9,7 @@ router.param("userId",getUserById)
 // TODO: how is it different from how you used to follow ??
 router.get("/user/:userId",isSignedIn,isAuthenticated, getUser)
 
-//updating th user information
+//updating the user information
 router.put("/user/:userId",isSignedIn,isAuthenticated,updateUser)
 
 router.get("/orders/user/:userId",isSignedIn,isAuthenticated,userPurchaseList)

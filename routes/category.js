@@ -17,6 +17,8 @@ router.post(
     createCategory)
 //read routes
 router.get("/category/:categoryId",getEachCategory)
+// FIXME:
+// FIXME: get allcategories are not woorking !!!
 router.get("/category/allcategories",getAllCategory)
 
 // update route
@@ -29,7 +31,7 @@ router.put(
 
 //delete the route
 router.delete(
-    "category/:categoryId/:userId",
+    "/category/:categoryId/:userId",
     isSignedIn,
     isAuthenticated,
     isAdmin,
