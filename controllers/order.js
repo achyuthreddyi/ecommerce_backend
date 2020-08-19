@@ -1,0 +1,30 @@
+const { Order,ProductCart } = require("../models/order")
+
+
+exports.getOrderById = (req,res,next,id ) =>{
+    Order.findById(id)
+    .populate("products.product","name price")
+    .exec( (error,order) =>{
+        if(error){
+            return res.status(400).json({
+                error: "NO ORDER FOUND"
+            })
+        }
+        req.order = order
+        next();
+    })
+}
+
+exports.createNewOrder = (req,res) =>{
+    req.body.order.user = req.profile
+    const order = new Order(req.body.order)
+    order.save( (error,order)=>{
+        if(error){
+            return res.status(400).json({
+                error: "CANNOT CREATE ORDER"
+            })
+        }
+        res.json(order)
+    })
+
+}
