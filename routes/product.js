@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 
 
-const { getProductById,createProduct,getEachProduct,photo,deleteProduct,updateProduct,displayAllProductLimit } = require("../controllers/product")
+const { getProductById,createProduct,getEachProduct,photo,deleteProduct,updateProduct,displayAllProductLimit,getAllUniqueCategories } = require("../controllers/product")
 const { isSignedIn,isAuthenticated,isAdmin } = require("../controllers/auth")
 const { getUserById } = require("../controllers/user")
 const { route } = require("./auth")
@@ -43,5 +43,8 @@ router.put(
 //listing route //TODO: use the onscroll feature
 router.get("/products",displayAllProductLimit)
 
+// distinct categories
+router.get("/products/categories",getAllUniqueCategories)
 
-module.exports = router
+
+module.exports = router;
